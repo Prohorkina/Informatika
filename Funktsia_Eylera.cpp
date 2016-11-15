@@ -1,17 +1,31 @@
 #include <iostream>
 
+
 using namespace std;
 
-int main () {
-    int n, s;
-    cin >> n;
-    s = n;
-    for (int i = 2; i*i <= n; i++)
-        if (n % i == 0) {
-            while (n % i == 0) n/= i;
-            s=s-s/i;
-        }
-    if (n > 1) s=s-s/n;
-    cout << s;
-    return 0;
+void Eulers_formula(int n) {
+	int a[n];
+	int s = n;
+	for (int i = 0; i < n; i++) {
+		a[i] = i + 1;
+	}
+	for (int i = 0; i < n; i++) {
+		for (int j = n; j > 0; j--) {
+			if (n%j == 0 & a[i]%j== 0) {
+				if (j != 1) {
+					s--;
+				}
+				break;
+			}
+		}
+	}
+	cout << s;
+
+}
+
+int main() {
+	int n;
+	cin >> n;
+	Eulers_formula(n);
+	return 0;
 }
